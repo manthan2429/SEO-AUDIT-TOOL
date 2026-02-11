@@ -125,7 +125,7 @@ Frontend:
 ## 📸 Screenshots
 
 ### Start Audit Page
-<img width="1914" height="847" alt="image" src="https://github.com/user-attachments/assets/2ce2425e-347f-4fec-aeb5-3b28b82fab0b" />
+<img width="653" height="584" alt="image" src="https://github.com/user-attachments/assets/c82caffb-7fef-4151-98e0-7bd4954a069f" />
 
 
 /screenshots/start-audit.png
@@ -185,6 +185,7 @@ Developed a full-stack technical SEO auditing platform that performs navigation-
 
 Manthan Patel
 Full Stack MERN Developer
+
 
 
 
