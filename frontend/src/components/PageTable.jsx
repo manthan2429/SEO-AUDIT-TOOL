@@ -11,8 +11,8 @@ import PageRow from "./PageRow";
 
 const PageTable = ({ pages }) => {
 	return (
-		<Paper sx={{ mt: 4 }}>
-			<Table>
+		<Paper sx={{ mt: 4, mb: 3, borderRadius: 3 }}>
+			<Table sx={{ tableLayout: "fixed" }}>
 				<TableHead>
 					<TableRow>
 						<TableCell />

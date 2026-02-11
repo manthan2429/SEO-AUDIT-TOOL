@@ -13,7 +13,7 @@ import {
 	TableRow,
 	Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAudit } from "../api/auditApi";
 import PageTable from "../components/PageTable";
@@ -128,7 +128,8 @@ export default function AuditOverviewPage() {
 			sm={10}
 			alignItems={"center"}
 			justifyContent={"center"}
-			mt={5}>
+			mt={5}
+			px={3}>
 			<Typography variant="h4" fontWeight="bold" mb={4}>
 				Audit Overview
 			</Typography>

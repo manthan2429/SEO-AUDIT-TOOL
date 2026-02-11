@@ -64,7 +64,7 @@ export default function StartAuditPage() {
 					</Box>
 
 					<Typography variant="h5" fontWeight="bold" gutterBottom>
-						Technical SEO Audit
+						SEO Audit Tool
 					</Typography>
 
 					<Typography color="text.secondary" mb={3}>

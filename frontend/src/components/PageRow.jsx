@@ -37,14 +37,20 @@ const PageRow = ({ page }) => {
 						backgroundColor: "#f5f7fa",
 					},
 				}}>
-				<TableCell width={60}>
+				<TableCell width={10}>
 					<IconButton onClick={() => setOpen(!open)}>
 						{open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
 					</IconButton>
 				</TableCell>
 
 				<TableCell>
-					<Typography fontWeight={500}>{page.url}</Typography>
+					<Typography
+						fontWeight={500}
+						sx={{
+							wordBreak: "break-all",
+						}}>
+						{page.url}
+					</Typography>
 				</TableCell>
 
 				<TableCell>
@@ -65,9 +71,16 @@ const PageRow = ({ page }) => {
 				</TableCell>
 			</TableRow>
 			<TableRow>
-				<TableCell colSpan={4} sx={{ p: 0 }}>
+				<TableCell colSpan={4} sx={{ width: "100%", p: 1 }}>
 					<Collapse in={open} timeout="auto" unmountOnExit>
-						<Box sx={{ p: 3, bgcolor: "#fafafa" }}>
+						<Box
+							sx={{
+								p: 2,
+								borderRadius: 2,
+								border: "1px solid #eee",
+								width: "100%",
+								boxSizing: "border-box",
+							}}>
 							<Typography variant="subtitle1" fontWeight="bold" mb={1}>
 								Issues
 							</Typography>
