@@ -139,7 +139,7 @@ Frontend:
 
 
 ### Page-Level Breakdown
-<img width="1861" height="660" alt="image" src="https://github.com/user-attachments/assets/91d98620-1194-4b62-8932-1bb260ff185d" />
+<img width="1861" height="660" alt="image" src="https://github.com/user-attachments/assets/85ad54f4-65ba-4b9b-8ae7-e925e87ee68f" />
 
 
 /screenshots/page-breakdown.png
@@ -185,6 +185,7 @@ Developed a full-stack technical SEO auditing platform that performs navigation-
 
 Manthan Patel
 Full Stack MERN Developer
+
 
 
 
