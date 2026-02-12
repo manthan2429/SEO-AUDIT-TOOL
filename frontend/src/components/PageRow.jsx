@@ -110,7 +110,7 @@ const PageRow = ({ page }) => {
 												sx={{
 													p: 2,
 													borderRadius: 2,
-													border: "1px solid #eee",
+													border: "1px solid #e4e4e4",
 													textAlign: "center",
 												}}>
 												<Typography variant="caption" color="text.secondary">

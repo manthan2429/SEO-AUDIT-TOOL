@@ -26,6 +26,10 @@ export const getAudit = async (auditId) => {
 						title_length_invalid: 0,
 						meta_description_length_invalid: 0,
 						meta_description_invalid: 0,
+						meta_description_missing: 0,
+						canonical_missing: 0,
+						h1_missing: 0,
+						total_pages: pages.length,
 					};
 
 					pages.forEach((page) => {
@@ -33,7 +37,12 @@ export const getAudit = async (auditId) => {
 
 						if (issues.includes("TITLE_MISSING")) summary.missing_titles++;
 						if (issues.includes("MULTIPLE_H1")) summary.multiple_h1++;
+						if (issues.includes("H1_MISSING")) summary.h1_missing++;
 						if (issues.includes("NOINDEX")) summary.noindex_pages++;
+						if (issues.includes("META_DESCRIPTION_MISSING"))
+							summary.meta_description_missing++;
+						if (issues.includes("CANONICAL_MISSING"))
+							summary.canonical_missing++;
 						if (page.status_code !== 200) summary.non_200_pages++;
 						if (issues.includes("TITLE_LENGTH_INVALID"))
 							summary.title_length_invalid++;
@@ -41,6 +50,7 @@ export const getAudit = async (auditId) => {
 							summary.meta_description_length_invalid++;
 						if (issues.includes("META_DESCRIPTION_INVALID"))
 							summary.meta_description_invalid++;
+						summary.total_pages = pages.length;
 					});
 
 					resolve({

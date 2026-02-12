@@ -17,15 +17,22 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAudit } from "../api/auditApi";
 import PageTable from "../components/PageTable";
+import { PremiumSkeleton } from "../components/PremiumSkeleton.jsx";
 import useApi from "../hooks/useApi.js";
 
 // Icons
-import DescriptionIcon from "@mui/icons-material/Description";
+import {
+	default as DescriptionIcon,
+	default as Pages,
+} from "@mui/icons-material/Description";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import FormatSizeIcon from "@mui/icons-material/FormatSize";
 import HttpIcon from "@mui/icons-material/Http";
-import TitleIcon from "@mui/icons-material/Title";
+import LinkOffIcon from "@mui/icons-material/LinkOff";
+import NotesOffIcon from "@mui/icons-material/NotesOutlined";
+import TextFieldsIcon from "@mui/icons-material/TextFields";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { PremiumSkeleton } from "../components/PremiumSkeleton";
 
 export default function AuditOverviewPage() {
 	const { id } = useParams();
@@ -149,13 +156,44 @@ export default function AuditOverviewPage() {
 				</>
 			) : audit ? (
 				<Fade in timeout={500}>
-					<Box>
+					<Box sx={{ columnSpan: 10 }}>
 						<Typography mb={3}>
 							Audited URL: <b>{audit?.url}</b>
 						</Typography>
 
 						<Grid container spacing={3}>
-							<Grid item xs={12} sm={6} md={3}>
+							<Grid
+								item
+								xs={12}
+								sm={6}
+								md={2}
+								sx={{
+									flexBasis: { md: "18%" },
+									maxWidth: { md: "19%" },
+								}}>
+								<MetricCard
+									title="Total Pages"
+									value={audit.summary.total_pages}
+									icon={
+										<Box
+											sx={{
+												color: "success.main",
+											}}>
+											<Pages fontSize="large" />
+										</Box>
+									}
+								/>
+							</Grid>
+
+							<Grid
+								item
+								xs={12}
+								sm={6}
+								md={2}
+								sx={{
+									flexBasis: { md: "18%" },
+									maxWidth: { md: "19%" },
+								}}>
 								<MetricCard
 									title="Missing Titles"
 									value={audit.summary.missing_titles}
@@ -167,13 +205,47 @@ export default function AuditOverviewPage() {
 														? "error.main"
 														: "success.main",
 											}}>
-											<TitleIcon fontSize="large" />
+											<ErrorOutlineIcon fontSize="large" />
 										</Box>
 									}
 								/>
 							</Grid>
 
-							<Grid item xs={12} sm={6} md={3}>
+							<Grid
+								item
+								xs={12}
+								sm={6}
+								md={2}
+								sx={{
+									flexBasis: { md: "18%" },
+									maxWidth: { md: "19%" },
+								}}>
+								<MetricCard
+									title="Missing Canonical"
+									value={audit.summary.canonical_missing}
+									icon={
+										<Box
+											sx={{
+												color:
+													audit.summary.canonical_missing > 0
+														? "error.main"
+														: "success.main",
+											}}>
+											<LinkOffIcon fontSize="large" />
+										</Box>
+									}
+								/>
+							</Grid>
+
+							<Grid
+								item
+								xs={12}
+								sm={6}
+								md={2}
+								sx={{
+									flexBasis: { md: "18%" },
+									maxWidth: { md: "19%" },
+								}}>
 								<MetricCard
 									title="Multiple H1"
 									value={audit.summary.multiple_h1}
@@ -185,13 +257,47 @@ export default function AuditOverviewPage() {
 														? "error.main"
 														: "success.main",
 											}}>
-											<TitleIcon fontSize="large" />
+											<FormatListNumberedIcon fontSize="large" />
 										</Box>
 									}
 								/>
 							</Grid>
 
-							<Grid item xs={12} sm={6} md={3}>
+							<Grid
+								item
+								xs={12}
+								sm={6}
+								md={2}
+								sx={{
+									flexBasis: { md: "18%" },
+									maxWidth: { md: "19%" },
+								}}>
+								<MetricCard
+									title="Missing H1"
+									value={audit.summary.h1_missing}
+									icon={
+										<Box
+											sx={{
+												color:
+													audit.summary.h1_missing > 0
+														? "error.main"
+														: "success.main",
+											}}>
+											<TextFieldsIcon fontSize="large" />
+										</Box>
+									}
+								/>
+							</Grid>
+
+							<Grid
+								item
+								xs={12}
+								sm={6}
+								md={2}
+								sx={{
+									flexBasis: { md: "18%" },
+									maxWidth: { md: "19%" },
+								}}>
 								<MetricCard
 									title="Noindex Pages"
 									value={audit.summary.noindex_pages}
@@ -209,7 +315,15 @@ export default function AuditOverviewPage() {
 								/>
 							</Grid>
 
-							<Grid item xs={12} sm={6} md={3}>
+							<Grid
+								item
+								xs={12}
+								sm={6}
+								md={2}
+								sx={{
+									flexBasis: { md: "18%" },
+									maxWidth: { md: "19%" },
+								}}>
 								<MetricCard
 									title="Non 200 Pages"
 									value={audit.summary.non_200_pages}
@@ -227,7 +341,15 @@ export default function AuditOverviewPage() {
 								/>
 							</Grid>
 
-							<Grid item xs={12} sm={6} md={3}>
+							<Grid
+								item
+								xs={12}
+								sm={6}
+								md={2}
+								sx={{
+									flexBasis: { md: "18%" },
+									maxWidth: { md: "19%" },
+								}}>
 								<MetricCard
 									title="Title Length Invalid"
 									value={audit.summary.title_length_invalid}
@@ -245,7 +367,15 @@ export default function AuditOverviewPage() {
 								/>
 							</Grid>
 
-							<Grid item xs={12} sm={6} md={3}>
+							<Grid
+								item
+								xs={12}
+								sm={6}
+								md={2}
+								sx={{
+									flexBasis: { md: "18%" },
+									maxWidth: { md: "19%" },
+								}}>
 								<MetricCard
 									title="Meta Description Invalid"
 									value={audit.summary.meta_description_invalid}
@@ -258,6 +388,32 @@ export default function AuditOverviewPage() {
 														: "success.main",
 											}}>
 											<DescriptionIcon fontSize="large" />
+										</Box>
+									}
+								/>
+							</Grid>
+
+							<Grid
+								item
+								xs={12}
+								sm={6}
+								md={2}
+								sx={{
+									flexBasis: { md: "18%" },
+									maxWidth: { md: "19%" },
+								}}>
+								<MetricCard
+									title="Missing Meta Description"
+									value={audit.summary.meta_description_missing}
+									icon={
+										<Box
+											sx={{
+												color:
+													audit.summary.meta_description_missing > 0
+														? "error.main"
+														: "success.main",
+											}}>
+											<NotesOffIcon fontSize="large" />
 										</Box>
 									}
 								/>
