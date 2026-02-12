@@ -1,16 +1,22 @@
-import { Box } from "@mui/material";
+import { Box, Toolbar } from "@mui/material";
+import Header from "../components/Header.jsx";
 
 export default function MainLayout({ children }) {
 	return (
-		<Box
-			sx={{
-				display: "flex",
-				alignItems: "center",
-				justifyContent: "center",
-				width: "100%",
-				minHeight: "100vh",
-			}}>
-			{children}
+		<Box>
+			<Header />
+			<Toolbar />
+
+			<Box
+				sx={{
+					minHeight: "calc(100vh - 70px)",
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					p: 2,
+				}}>
+				{children}
+			</Box>
 		</Box>
 	);
 }

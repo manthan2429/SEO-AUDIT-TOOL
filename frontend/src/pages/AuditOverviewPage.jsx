@@ -11,6 +11,7 @@ import {
 	TableContainer,
 	TableHead,
 	TableRow,
+	Tooltip,
 	Typography,
 } from "@mui/material";
 import { useEffect } from "react";
@@ -44,16 +45,26 @@ export default function AuditOverviewPage() {
 		}
 	}, [id]);
 
-	const MetricCard = ({ title, value, icon }) => (
+	const MetricCard = ({ title, fullTitle, value, icon }) => (
 		<Card sx={{ borderRadius: 3, boxShadow: 3, height: "100%" }}>
 			<CardContent>
 				<Box display="flex" alignItems="center" gap={2}>
 					<Box color="primary.main">{icon}</Box>
 
 					<Box>
-						<Typography color="text.secondary" variant="body2">
-							{title}
-						</Typography>
+						<Tooltip title={fullTitle ? fullTitle : title} arrow>
+							<Typography
+								variant="caption"
+								fontWeight={600}
+								sx={{
+									display: "-webkit-box",
+									WebkitLineClamp: 2,
+									WebkitBoxOrient: "vertical",
+									overflow: "hidden",
+								}}>
+								{title}
+							</Typography>
+						</Tooltip>
 
 						<Typography variant="h5" fontWeight="bold">
 							{value}
@@ -135,9 +146,9 @@ export default function AuditOverviewPage() {
 			sm={10}
 			alignItems={"center"}
 			justifyContent={"center"}
-			mt={5}
-			px={3}>
-			<Typography variant="h4" fontWeight="bold" mb={4}>
+			mt={2}
+			px={2}>
+			<Typography variant="h5" fontWeight="bold" mb={2}>
 				Audit Overview
 			</Typography>
 			{loading ? (
@@ -403,7 +414,8 @@ export default function AuditOverviewPage() {
 									maxWidth: { md: "19%" },
 								}}>
 								<MetricCard
-									title="Missing Meta Description"
+									title="Missing Meta Descr..."
+									fullTitle="Missing Meta Description"
 									value={audit.summary.meta_description_missing}
 									icon={
 										<Box
