@@ -169,7 +169,7 @@ http://localhost:5173
 
 Backend API:
 
-http://localhost:5000
+http://localhost:3000
 
 📂 Project Structure
 backend/
@@ -185,6 +185,7 @@ Developed a full-stack technical SEO auditing platform that performs navigation-
 
 Manthan Patel
 Full Stack MERN Developer
+
 
 
 
